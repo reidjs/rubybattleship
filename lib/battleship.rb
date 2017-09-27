@@ -13,7 +13,7 @@ class BattleshipGame
   end
   def take_turns(num)
     p "It is now player #{num}\'s turn. Press ENTER to continue"
-        input = gets
+    input = gets
     if num == 1
       player = @player1
       other_player = @player2

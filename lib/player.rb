@@ -9,8 +9,8 @@ class Player
       :V => 4,
       :B => 3,
       :S => 2,
-      :CC => 2,
-      :DD => 1
+      :C => 2,
+      :D => 1
     }
     @ships_to_place = @ship_sizes.keys
     @board = board
@@ -113,12 +113,16 @@ class Computer < Player
     # other_board.render
     rand_x = (rand*(@board.grid.length)).floor
     rand_y = (rand*(@board.grid.length)).floor
-    if !attack(other_board, [rand_x, rand_y])
+    attack_value = attack(other_board, [rand_x, rand_y])
+    if !attack_value
       return fire_randomly(other_board)
     end
     p "******COMPUTER HAS ATTACKED*******"
-
-
+    if attack_value == "Miss"
+      p "Computer missed!"
+    else
+      p "Computer hit your #{attack_value}!"
+    end
     # p "Computer fired on #{rand_x}, #{rand_y}"
   end
   # def ships_to_place
