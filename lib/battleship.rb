@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require_relative 'board'
 require_relative 'player'
 class BattleshipGame
@@ -11,7 +12,8 @@ class BattleshipGame
     @player2.send(:place_ships)
   end
   def take_turns(num)
-    p "Next turn"
+    p "It is now player #{num}\'s turn. Press ENTER to continue"
+        input = gets
     if num == 1
       player = @player1
       other_player = @player2
@@ -29,9 +31,21 @@ class BattleshipGame
     take_turns(num)
   end
 end
-p1 = Human.new
+def play_game
+  p "Enter number of (human) players [1 or 2]: "
+  input = gets.downcase.chomp
+  if input == "1"
+    p1 = Human.new
+    p2 = Computer.new
+  elsif input == "2"
+    p1 = Human.new
+    p2 = Human.new
+  else
+    return play_game
+  end
+  game = BattleshipGame.new(p1, p2)
+  game.place_ships
+  game.take_turns(1)
+end
+play_game
 # p2 = Computer.new
-p2 = Human.new
-game = BattleshipGame.new(p1, p2)
-game.place_ships
-game.take_turns(1)
