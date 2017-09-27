@@ -35,7 +35,7 @@ class Attack_Grid
     @grid[pos[0]][pos[1]] = "H"
   end
   def mark_miss(pos)
-    @grid[pos[0]][pos[1]] = "X"
+    @grid[pos[0]][pos[1]] = "M"
   end
   def render
     # p [""]

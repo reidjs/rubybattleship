@@ -8,9 +8,9 @@ class Player
     @ship_sizes = {
       :V => 4,
       :B => 3,
-      :S => 2
-      # :CC => 2,
-      # :DD => 1,
+      :S => 2,
+      :CC => 2,
+      :DD => 1
     }
     @ships_to_place = @ship_sizes.keys
     @board = board
@@ -116,11 +116,9 @@ class Computer < Player
     if !attack(other_board, [rand_x, rand_y])
       return fire_randomly(other_board)
     end
-    p "******COMPUTER IS ATTACKING*******"
-    p "******COMPUTER IS ATTACKING*******"
-    p "******COMPUTER IS ATTACKING*******"
-    p "******COMPUTER IS ATTACKING*******"
-    p "******COMPUTER IS ATTACKING*******"
+    p "******COMPUTER HAS ATTACKED*******"
+
+
     # p "Computer fired on #{rand_x}, #{rand_y}"
   end
   # def ships_to_place
